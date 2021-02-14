@@ -1,15 +1,18 @@
-import pages from "./pages"
+import pages from "./pages";
 
-const routes = [{
+const routes = [
+  {
     exact: true,
     path: "/route/:routeTag",
     name: "route",
-    component: pages.Route
-}, {
+    component: pages.Route,
+  },
+  {
     exact: true,
     path: "/",
     name: "index",
-    component: pages.Index
-}]
+    component: pages.Index,
+  },
+];
 
 export default routes;

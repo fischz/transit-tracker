@@ -1,9 +1,9 @@
-import Route from "./Route/Route"
-import Index from "./Index/Index"
+import Route from "./Route/Route";
+import Index from "./Index/Index";
 
 const pages = {
-    Route,
-    Index
-}
+  Route,
+  Index,
+};
 
 export default pages;

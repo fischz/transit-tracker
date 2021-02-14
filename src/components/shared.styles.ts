@@ -1,15 +1,14 @@
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components";
 
 export const InputGroup = styled.div`
-    padding: ${props => props.theme.padding.m};
-    display: flex;
-    & span {
-        margin-right: ${props => props.theme.margin.m};
-    }
-    & input {
-
-    }
-`
+  padding: ${(props) => props.theme.padding.m};
+  display: flex;
+  & span {
+    margin-right: ${(props) => props.theme.margin.m};
+  }
+  & input {
+  }
+`;
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -37,4 +36,4 @@ export const GlobalStyle = createGlobalStyle`
         transition: all 500ms;
         transform: translate(0, 200px);
     }
-`
+`;
