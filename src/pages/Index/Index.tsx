@@ -144,22 +144,26 @@ const Index: React.FC = () => {
       )}
 
       <SectionTitle>Favorite Stops</SectionTitle>
-      {favourites.length > 0? <Wrapper>
-        <StopListContainer>
-          <TransitionGroup component={null} enter={true} exit={true}>
-            {favourites?.map((s) => (
-              <CSSTransition
-                key={s.tag}
-                timeout={{ enter: 500, exit: 300 }}
-                classNames="pop-fade"
-                in={true}
-              >
-                <TransitStopListItem stop={s} key={s.tag} />
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </StopListContainer>
-      </Wrapper>: <Wrapper>Favorited stops will be displayed here.</Wrapper>}
+      {favourites.length > 0 ? (
+        <Wrapper>
+          <StopListContainer>
+            <TransitionGroup component={null} enter={true} exit={true}>
+              {favourites?.map((s) => (
+                <CSSTransition
+                  key={s.tag}
+                  timeout={{ enter: 500, exit: 300 }}
+                  classNames="pop-fade"
+                  in={true}
+                >
+                  <TransitStopListItem stop={s} key={s.tag} />
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </StopListContainer>
+        </Wrapper>
+      ) : (
+        <Wrapper>Favorited stops will be displayed here.</Wrapper>
+      )}
       <SectionTitle>Browse Routes</SectionTitle>
       <RouteList routes={routes} />
     </Layout>

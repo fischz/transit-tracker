@@ -7,46 +7,45 @@ import { GlobalStyle } from "./components/shared.styles";
 import routes from "./routes";
 import { darkTheme, lightTheme } from "./theme";
 
-
-
-
 interface State {
   nightMode: boolean;
 }
 
 const initialState: State = {
-  nightMode: true
-}
+  nightMode: true,
+};
 
-type Action = 
-  | {type: 'setTheme', nightMode: boolean}
-  | {type: 'setLocation'};
+type Action =
+  | { type: "setTheme"; nightMode: boolean }
+  | { type: "setLocation" };
 
 const AppReducer = (state: State, action: Action): State => {
-  switch (action.type){
-    case 'setTheme':
-        return {...state, nightMode: action.nightMode}
-    case 'setLocation':
+  switch (action.type) {
+    case "setTheme":
+      return { ...state, nightMode: action.nightMode };
+    case "setLocation":
       return state;
-  } 
-}
+  }
+};
 
-export const AppContext = React.createContext<{state: State, dispatch: Dispatch<Action>}>({
+export const AppContext = React.createContext<{
+  state: State;
+  dispatch: Dispatch<Action>;
+}>({
   state: initialState,
-  dispatch: () => null
-})
+  dispatch: () => null,
+});
 
 //const AppContext = React.createContext<Context>(DefaultContext)
 
 function App() {
-
-  const [state, dispatch] = useReducer(AppReducer, initialState)
+  const [state, dispatch] = useReducer(AppReducer, initialState);
 
   return (
     <AppContainer className="App">
       <GlobalStyle />
-        <AppContext.Provider value={{state, dispatch}}>
-        <ThemeProvider theme={state.nightMode? darkTheme: lightTheme}>
+      <AppContext.Provider value={{ state, dispatch }}>
+        <ThemeProvider theme={state.nightMode ? darkTheme : lightTheme}>
           <Router>
             <Switch>
               {routes.map((route) => (
@@ -60,7 +59,7 @@ function App() {
             </Switch>
           </Router>
         </ThemeProvider>
-        </AppContext.Provider>
+      </AppContext.Provider>
     </AppContainer>
   );
 }
