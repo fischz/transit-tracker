@@ -144,7 +144,7 @@ const Index: React.FC = () => {
       )}
 
       <SectionTitle>Favorite Stops</SectionTitle>
-      <Wrapper>
+      {favourites.length > 0? <Wrapper>
         <StopListContainer>
           <TransitionGroup component={null} enter={true} exit={true}>
             {favourites?.map((s) => (
@@ -159,7 +159,7 @@ const Index: React.FC = () => {
             ))}
           </TransitionGroup>
         </StopListContainer>
-      </Wrapper>
+      </Wrapper>: <Wrapper>Favorited stops will be displayed here.</Wrapper>}
       <SectionTitle>Browse Routes</SectionTitle>
       <RouteList routes={routes} />
     </Layout>

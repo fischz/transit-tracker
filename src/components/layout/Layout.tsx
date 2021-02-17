@@ -7,6 +7,7 @@ import {
   HeaderBadge,
   HeaderItem,
   HeaderLink,
+  HeaderLogo,
   HeaderSeperator,
 } from "./Layout.styles";
 
@@ -18,11 +19,12 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <Container>
       <Header>
-        <HeaderBadge>TTC Updates</HeaderBadge>
-        <HeaderSeperator />
+        <HeaderLink to="/"><HeaderLogo src='/logo192-transparent.png'/></HeaderLink>
+        <HeaderBadge><HeaderLink to="/">Transit Tracker</HeaderLink></HeaderBadge>
+        {/*<HeaderSeperator />
         <HeaderItem>
           <HeaderLink to="/">Home</HeaderLink>
-        </HeaderItem>
+        </HeaderItem>*/}
       </Header>
       <ContentWrapper>{children}</ContentWrapper>
     </Container>

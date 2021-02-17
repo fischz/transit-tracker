@@ -9,6 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
+  display:flex;
+  align-items: center;
   padding: ${(props) => props.theme.padding.m};
   -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
@@ -23,6 +25,11 @@ export const HeaderItem = styled.span`
 export const HeaderBadge = styled(HeaderItem)`
   color: ${(props) => props.theme.colors.accent};
 `;
+
+export const HeaderLogo = styled.img`
+  height: 2.5em;
+  margin-right: ${props => props.theme.padding.m}
+`
 
 export const HeaderLink = styled(Link)`
   color: ${(props) => props.theme.colors.text};
