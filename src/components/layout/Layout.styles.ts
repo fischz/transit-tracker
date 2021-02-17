@@ -11,13 +11,22 @@ export const Container = styled.div`
 export const Header = styled.div`
   display:flex;
   align-items: center;
+  justify-content: space-between;
   padding: ${(props) => props.theme.padding.m};
   -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
 `;
 
+export const HeaderLeft = styled.span`
+  display: flex;
+  align-items: center;
+`
+export const HeaderRight = styled(HeaderLeft)``;
+
 export const HeaderItem = styled.span`
+  display: flex;
+  height: auto;
   font-size: 1.5em;
   padding: ${(props) => props.theme.padding.s};
 `;
@@ -28,7 +37,7 @@ export const HeaderBadge = styled(HeaderItem)`
 
 export const HeaderLogo = styled.img`
   height: 2.5em;
-  margin-right: ${props => props.theme.padding.m}
+  margin-right: ${props => props.theme.padding.m};
 `
 
 export const HeaderLink = styled(Link)`
@@ -55,5 +64,10 @@ export const HeaderSeperator = styled.span`
   margin-right: ${(props) => props.theme.margin.m};
   border-right: 2px solid ${(props) => props.theme.colors.border};
 `;
+
+export const NightModeIndicator = styled.img`
+  height: 1em;
+  border-radius: 2em;
+`
 
 export const ContentWrapper = styled.div``;
