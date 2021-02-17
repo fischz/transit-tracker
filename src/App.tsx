@@ -1,4 +1,4 @@
-import React, { Dispatch, useReducer} from "react";
+import React, { Dispatch, useReducer } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { AppContainer } from "./App.styles";

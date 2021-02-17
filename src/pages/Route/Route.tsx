@@ -32,27 +32,30 @@ const Route: React.FC<Props> = ({ match }) => {
   const [loadedStops, setLoadedStops] = React.useState<Stop[]>([]);
   const [selectedStop, setSelectedStop] = React.useState<Stop | null>(null);
 
-  const LoadNewStops = useCallback(async (numStops = 3) => {
-    if (route && route.stops && route.stops.length > 0) {
-      //if no more stops, then dont load
-      if (loadedStops.length >= route.stops.length) {
-        console.log("no more stops!");
-        return;
+  const LoadNewStops = useCallback(
+    async (numStops = 3) => {
+      if (route && route.stops && route.stops.length > 0) {
+        //if no more stops, then dont load
+        if (loadedStops.length >= route.stops.length) {
+          console.log("no more stops!");
+          return;
+        }
+        const ttcApi = new TTCApi();
+        const newStops = route.stops?.slice(
+          loadedStops?.length,
+          loadedStops?.length + numStops
+        );
+        const predictionStops = newStops?.map(async (s) => {
+          s.predictions = await ttcApi.GetStopPredictions(s.tag, route.tag);
+          return s;
+        });
+        const s = await Promise.all(predictionStops!!);
+        const updatedStops = loadedStops?.concat(s);
+        setLoadedStops(updatedStops);
       }
-      const ttcApi = new TTCApi();
-      const newStops = route.stops?.slice(
-        loadedStops?.length,
-        loadedStops?.length + numStops
-      );
-      const predictionStops = newStops?.map(async (s) => {
-        s.predictions = await ttcApi.GetStopPredictions(s.tag, route.tag);
-        return s;
-      });
-      const s = await Promise.all(predictionStops!!);
-      const updatedStops = loadedStops?.concat(s);
-      setLoadedStops(updatedStops);
-    }
-  }, [loadedStops, route]);
+    },
+    [loadedStops, route]
+  );
 
   useEffect(() => {
     const ttcApi = new TTCApi();
@@ -64,7 +67,7 @@ const Route: React.FC<Props> = ({ match }) => {
   }, [match.params.routeTag]);
 
   useEffect(() => {
-    if(loadedStops.length === 0){
+    if (loadedStops.length === 0) {
       LoadNewStops(9);
     }
   }, [route, LoadNewStops, loadedStops]);

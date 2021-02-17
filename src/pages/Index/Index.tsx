@@ -39,7 +39,8 @@ const Index: React.FC = () => {
     setFavourites(favourites);
   }, [setFavourites]);
 
-  const getNearbyStops = useCallback(async (pos: GeolocationPosition) => {
+  const getNearbyStops = useCallback(
+    async (pos: GeolocationPosition) => {
       const nearbyService = new NearbyStopsService();
       const nearbyStops = await nearbyService.GetNearbyStops(
         pos.coords.latitude,
@@ -47,14 +48,15 @@ const Index: React.FC = () => {
         nearbyStopDistance
       );
       setNearbyStops(nearbyStops);
-  }, [nearbyStopDistance]);
-
+    },
+    [nearbyStopDistance]
+  );
 
   const getGeoLocation = useCallback(async () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((pos) => {
         setGeolocation(pos);
-        getNearbyStops(pos)
+        getNearbyStops(pos);
       });
     } else {
       console.log("Location Not available");
