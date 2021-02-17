@@ -32,7 +32,7 @@ const Route: React.FC<Props> = ({ match }) => {
   const [loadedStops, setLoadedStops] = React.useState<Stop[]>([]);
   const [selectedStop, setSelectedStop] = React.useState<Stop | null>(null);
 
-  const LoadNewStops = async (numStops = 3) => {
+  const LoadNewStops = useCallback(async (numStops = 3) => {
     if (route && route.stops && route.stops.length > 0) {
       //if no more stops, then dont load
       if (loadedStops.length >= route.stops.length) {
@@ -52,7 +52,7 @@ const Route: React.FC<Props> = ({ match }) => {
       const updatedStops = loadedStops?.concat(s);
       setLoadedStops(updatedStops);
     }
-  };
+  }, [loadedStops, route]);
 
   useEffect(() => {
     const ttcApi = new TTCApi();
@@ -64,8 +64,10 @@ const Route: React.FC<Props> = ({ match }) => {
   }, [match.params.routeTag]);
 
   useEffect(() => {
-    LoadNewStops(9);
-  }, [route]);
+    if(loadedStops.length === 0){
+      LoadNewStops(9);
+    }
+  }, [route, LoadNewStops, loadedStops]);
 
   const changeHandler = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (ev.target.name === "stopFilter") {

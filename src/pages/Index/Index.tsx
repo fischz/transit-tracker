@@ -39,31 +39,27 @@ const Index: React.FC = () => {
     setFavourites(favourites);
   }, [setFavourites]);
 
-  const getNearbyStops = useCallback(async () => {
-    if (geolocation != null) {
+  const getNearbyStops = useCallback(async (pos: GeolocationPosition) => {
       const nearbyService = new NearbyStopsService();
       const nearbyStops = await nearbyService.GetNearbyStops(
-        geolocation.coords.latitude,
-        geolocation.coords.longitude,
+        pos.coords.latitude,
+        pos.coords.longitude,
         nearbyStopDistance
       );
       setNearbyStops(nearbyStops);
-    }
-  }, [geolocation, nearbyStopDistance]);
+  }, [nearbyStopDistance]);
 
-  useEffect(() => {
-    getNearbyStops();
-  }, [geolocation]);
 
   const getGeoLocation = useCallback(async () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((pos) => {
         setGeolocation(pos);
+        getNearbyStops(pos)
       });
     } else {
       console.log("Location Not available");
     }
-  }, []);
+  }, [getNearbyStops]);
 
   const ToggleSettingsPopup = useCallback(async () => {
     if (isNearbySettingsOpen) {

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AppContext } from "../../App";
 import { ToggleSwitch, ToggleSwitchLabel } from "../shared.styles";
 import {
@@ -12,7 +11,6 @@ import {
   HeaderLink,
   HeaderLogo,
   HeaderRight,
-  HeaderSeperator,
   NightModeIndicator,
 } from "./Layout.styles";
 

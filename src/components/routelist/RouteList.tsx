@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { TransitRoute } from "../../types/Transit.type";
 import { RouteLink } from "./RouteList.styles";
 

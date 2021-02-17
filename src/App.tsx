@@ -1,6 +1,6 @@
-import React, { Dispatch, useEffect, useReducer, useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import React, { Dispatch, useReducer} from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 import { AppContainer } from "./App.styles";
 import { GlobalStyle } from "./components/shared.styles";
 
