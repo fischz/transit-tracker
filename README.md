@@ -17,6 +17,6 @@ a .env file that includes the variables shown in the .env.example file is necess
 ** REACT_APP_TTCAPI_HOST: a url for the TTC api, the nextbus api does not support https, so a [proxy function](https://gist.github.com/fischz/67cc54b79b1323b2bef9e51e3ac26348) will need to be set up to avoid mixed content policy violations 
 
 #### Screenshots ####
-![screenshot of application homepage, mobile size, night mode is enabled](demo-home.png)
-![screenshot of application route page, desktop size, night mode is disabled](demo-route.png)
+![screenshot of application homepage, mobile size, night mode is enabled](./demo-home.png)
+![screenshot of application route page, desktop size, night mode is disabled](./demo-route.png)
 
