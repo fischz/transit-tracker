@@ -12,7 +12,7 @@ interface State {
 }
 
 const initialState: State = {
-  nightMode: true,
+  nightMode: false,
 };
 
 type Action =

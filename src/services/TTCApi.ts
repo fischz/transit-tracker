@@ -2,7 +2,7 @@ import { Prediction, TransitRoute, Stop } from "../types/Transit.type";
 import FavouriteService from "./FavouriteService";
 
 class TTCApi {
-  static readonly HOST = "http://webservices.nextbus.com/service/publicXMLFeed";
+  static readonly HOST = `${process.env.REACT_APP_TTCAPI_HOST}/service/publicXMLFeed`;
   static readonly QUERY_ROUTELIST = "?command=routeList&a=<agency>";
   static readonly QUERY_ROUTE = "?command=routeConfig&a=<agency>&r=<route>";
   static readonly QUERY_PREDICTIONS =
