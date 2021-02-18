@@ -18,5 +18,5 @@ a .env file that includes the variables shown in the .env.example file is necess
 
 #### Screenshots ####
 ![screenshot of application homepage, mobile size, night mode is enabled](demo-home.PNG)
-![screenshot of application route page, desktop size, night mode is disabled](demo-home.PNG)
+![screenshot of application route page, desktop size, night mode is disabled](demo-route.PNG)
 
