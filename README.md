@@ -3,7 +3,7 @@
 Transit Tracker is a react application that shows arrival times for TTC bus stops.
 
 
-##### Deployment #####
+#### Deployment ####
 
 Transit Tracker is built with create-react-app, it can be built with
 
@@ -15,3 +15,7 @@ a .env file that includes the variables shown in the .env.example file is necess
 
 * REACT_APP_GOOGLEMAPS_KEY: a google maps api key, used for embedded maps
 * REACT_APP_TTCAPI_HOST: a url for the TTC api, the nextbus api does not support https, so a proxy function will need to be set up to avoid mixed content policy violations 
+
+#### Screenshots ####
+![screenshot of application homepage, mobile size, night mode is enabled](demo-home.png)
+![screenshot of application route page, desktop size, night mode is disabled](demo-route.png)
