@@ -18,8 +18,11 @@ import {
   Wrapper,
 } from "../Route/Route.styles";
 
+type FetchState =  'notStarted' | 'fetching' | 'success' | 'error'
+
 const Index: React.FC = () => {
   const [routes, setRoutes] = useState<TransitRoute[]>([]);
+  const [nearbyStopsFetchState,setNearbyStopsFetchState] = useState<FetchState>('notStarted');
   const [
     geolocation,
     setGeolocation,
@@ -41,12 +44,14 @@ const Index: React.FC = () => {
 
   const getNearbyStops = useCallback(
     async (pos: GeolocationPosition) => {
+      setNearbyStopsFetchState('fetching');
       const nearbyService = new NearbyStopsService();
       const nearbyStops = await nearbyService.GetNearbyStops(
         pos.coords.latitude,
         pos.coords.longitude,
         nearbyStopDistance
       );
+      setNearbyStopsFetchState('success');
       setNearbyStops(nearbyStops);
     },
     [nearbyStopDistance]
@@ -120,7 +125,7 @@ const Index: React.FC = () => {
       </Collapsible>
       {geolocation ? (
         <Wrapper>
-          <StopListContainer>
+          {nearbyStopsFetchState === 'success'? <StopListContainer>
             <TransitionGroup component={null} enter={true} exit={true}>
               {nearbyStops?.map((s) => (
                 <CSSTransition
@@ -133,7 +138,7 @@ const Index: React.FC = () => {
                 </CSSTransition>
               ))}
             </TransitionGroup>
-          </StopListContainer>
+          </StopListContainer>: <span> Fetching Stops...</span> }
         </Wrapper>
       ) : (
         <Wrapper>
